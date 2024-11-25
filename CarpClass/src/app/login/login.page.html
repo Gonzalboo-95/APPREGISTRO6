@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>REGISTRAPP6</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="ingresar()">
+    <ion-item [class.invalid]="!validarUsuario(login.Usuario)">
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input type="text" [(ngModel)]="login.Usuario" name="usuario" placeholder="Ingrese su usuario" required></ion-input>
+    </ion-item>
+
+    <ion-item [class.invalid]="!validarContra(login.Contrasena)">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="login.Contrasena" name="contrasena" placeholder="Ingrese su contraseña" required></ion-input>
+    </ion-item>
+
+    <ion-text color="danger" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </ion-text>
+
+    <ion-button expand="full" type="submit" [disabled]="isLoading">
+      <ion-spinner *ngIf="isLoading" slot="start" name="dots"></ion-spinner>
+      {{ isLoading ? 'Cargando...' : 'Ingresar' }}
+    </ion-button>
+
+    <ion-button expand="full" color="light" routerLink="/reset-password">Restablecer Contraseña</ion-button>
+    <ion-button expand="full" color="secondary" routerLink="/registrar">Crear Cuenta</ion-button>
+  </form>
+</ion-content>

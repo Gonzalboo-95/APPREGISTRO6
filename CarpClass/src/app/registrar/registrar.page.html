@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registrar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="register()">
+    <ion-item>
+      <ion-label>Usuario</ion-label>
+      <ion-input [(ngModel)]="username" name="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input [(ngModel)]="email" name="email" type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Contraseña</ion-label>
+      <ion-input [(ngModel)]="password" name="password" type="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Confirmar Contraseña</ion-label>
+      <ion-input [(ngModel)]="confirmPassword" name="confirmPassword" type="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Rol</ion-label>
+      <ion-select [(ngModel)]="role" name="role">
+        <ion-select-option value="estudiante">Estudiante</ion-select-option>
+        <ion-select-option value="docente">Docente</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button expand="block" type="submit">Registrar</ion-button>
+  </form>
+  <div *ngIf="errorMessage">
+    <p style="color: red;">{{ errorMessage }}</p>
+  </div>
+</ion-content>
